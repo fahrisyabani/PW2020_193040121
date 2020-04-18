@@ -64,7 +64,7 @@ $mahasiswa = $rows;
       <tr>
         <td><?= $i++; ?></td>
         <div class="gambar">
-          <td><img src="img/<?= $m["ambar"]; ?>"></td>
+          <td><img src="img/<?= $m["gambar"]; ?>" width="60"></td>
         </div>
         <td><?= $m["nrp"] ?></td>
         <td><?= $m["nama"] ?></td>
