@@ -25,15 +25,10 @@ $mahasiswa = $rows;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daftar Mahasiswa</title>
-  <style type="text/css">
-    .gambar {
-      widht: 20px;
-    }
-  </style>
 </head>
 
 <body>
-  <h2>Daftar Mahasiswa</h2>
+  <h3>Daftar Mahasiswa</h3>
   <table border="1" cellspacing="0" cellpadding="20">
     <tr bgcolor="orange">
       <td>
@@ -63,9 +58,7 @@ $mahasiswa = $rows;
     ?>
       <tr>
         <td><?= $i++; ?></td>
-        <div class="gambar">
-          <td><img src="img/<?= $m["ambar"]; ?>"></td>
-        </div>
+        <td><img src="img/<?= $m["gambar"]; ?>"></td>
         <td><?= $m["nrp"] ?></td>
         <td><?= $m["nama"] ?></td>
         <td><?= $m["email"] ?></td>
