@@ -113,4 +113,30 @@ span {
 	font-size: 20px;
 	font-style: italic;
 	font-size: 100;
+}.tombol-ubah {
+	font-family: monospace;
+	margin-top: 40px;
+	position: relative;
+	border-radius: 50px;
+	background-color: rgb(37, 37, 245);
+	font-size: 20px;
+	font-style: italic;
+	font-size: 100;
 }
+.tombol-hapus {
+		font-family: monospace;
+		margin-top: 40px;
+		position: relative;
+		border-radius: 50px;
+		background-color: rgb(255, 30, 30);
+		font-size: 20px;
+		font-style: italic;
+		font-size: 100;
+}
+	.add a {
+		font-family: monospace;
+		border-radius: 50px;
+		background-color: #40E0D0;
+		font-size: 20px;
+		font-style: italic;
+		font-size: 90; margin-left: ;}

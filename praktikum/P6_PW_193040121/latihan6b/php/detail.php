@@ -1,27 +1,29 @@
-<?php 
-	// Mengecek apakah ada id yang dikimkan
-	// Jika tidak maka akan dikembalikan ke halaman index.php
-	if (!isset($_GET['id'])) {
-		header("location: ../index.php");
-		exit;
-	}
+<?php
+// Mengecek apakah ada id yang dikimkan
+// Jika tidak maka akan dikembalikan ke halaman index.php
+if (!isset($_GET['id'])) {
+	header("location: ../index.php");
+	exit;
+}
 
-	require 'functions.php';
+require 'functions.php';
 
-	// Mengambil id dari url
-	$id = $_GET['id'];
+// Mengambil id dari url
+$id = $_GET['id'];
 
-	// Melakukan query dengan parameter id yang diambil dari url
-	$elektronik = query("SELECT * FROM elektronik WHERE id = $id")[0];
+// Melakukan query dengan parameter id yang diambil dari url
+$elektronik = query("SELECT * FROM elektronik WHERE id = $id")[0];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="../css/latihan5c.css">
+	<link rel="stylesheet" href="../css/latihan6b.css">
 </head>
+
 <body>
 	<div class="container">
 		<div class="gambar">
@@ -39,4 +41,5 @@
 		<button class="tombol-kembali"><a href="../index.php">kembali</a></button>
 	</div>
 </body>
+
 </html>
