@@ -1,5 +1,6 @@
 <?php
 // Mengecek apakah ada id yang dikimkan
+
 // Jika tidak maka akan dikembalikan ke halaman index.php
 if (!isset($_GET['id'])) {
 	header("location: ../index.php");
@@ -12,7 +13,7 @@ require 'functions.php';
 $id = $_GET['id'];
 
 // Melakukan query dengan parameter id yang diambil dari url
-$elektronik = query("SELECT * FROM elektronik WHERE id = $id")[0];
+$elektronik = query("SELECT * FROM elektronik WHERE id = $id");
 ?>
 
 <!DOCTYPE html>

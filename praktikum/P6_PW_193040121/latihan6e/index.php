@@ -16,8 +16,8 @@ if (isset($_POST['cari'])) {
 
 <head>
 	<meta charset="utf-8">
-	<title>Tambah data</title>
-	<link rel="stylesheet" type="text/css" href="css/latihan6b.css">
+	<title>Cari data</title>
+	<link rel="stylesheet" type="text/css" href="css/latihan6e.css">
 </head>
 
 <body>

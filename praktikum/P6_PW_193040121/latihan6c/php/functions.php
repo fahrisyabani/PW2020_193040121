@@ -51,13 +51,19 @@ function tambah($data)
 	echo mysqli_error($conn);
 	return mysqli_affected_rows($conn);
 }
+function hapus($id)
+{
+	$conn = koneksi();
+	mysqli_query($conn, "DELETE FROM elektronik WHERE id = $id") or die(mysqli_error($conn));
+	return mysqli_affected_rows($conn);
+}
 function cari($keyword)
 {
 	$conn = koneksi();
 
 	$query = "SELECT * FROM elektronik
-						WHERE 
-						nama_barang LIKE '%$keyword%'
+						WHERE  
+						nama_barang LIKE '%$keyword%' 
 					 ";
 	$result = mysqli_query($conn, $query);
 

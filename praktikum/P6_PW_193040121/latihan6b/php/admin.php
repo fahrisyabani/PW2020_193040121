@@ -12,16 +12,18 @@ $elektronik = query("SELECT * FROM elektronik")
 
 <head>
   <meta charset="utf-8">
-  <title>Tugas 2</title>
+  <title>Insert Data</title>
   <link rel="stylesheet" type="text/css" href="../css/latihan6b.css">
 </head>
 
 <body>
   <div class="container">
     <h1>Daftar Barang <span>Elektronik</span></h1>
-    <div class="add"><a href="tambah.php">Tambah Data</a>
+    <div class="add">
+      <a href="tambah.php">Tambah Data</a>
     </div>
     <br><br>
+
     <table border="1" cellspacing="0" cellpadding="20">
       <tr bgcolor="orange">
         <td>

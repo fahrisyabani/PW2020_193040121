@@ -12,13 +12,18 @@ $elektronik = query("SELECT * FROM elektronik")
 
 <head>
   <meta charset="utf-8">
-  <title>Halaman admin</title>
-  <link rel="stylesheet" type="text/css" href="../css/latihan6a.css">
+  <title>Delete Data</title>
+  <link rel="stylesheet" type="text/css" href="../css/latihan6c.css">
 </head>
 
 <body>
   <div class="container">
-    <h1>Daftar Barang Elektronik</h1>
+    <h1>Daftar Barang <span>Elektronik</span></h1>
+    <div class="add">
+      <a href="tambah.php">Tambah Data</a>
+    </div>
+    <br><br>
+
     <table border="1" cellspacing="0" cellpadding="20">
       <tr bgcolor="orange">
         <td>
@@ -54,8 +59,8 @@ $elektronik = query("SELECT * FROM elektronik")
         <tr>
           <td><?= $i ?></td>
           <td>
-            <a href=""><button class="tombol-ubah">Ubah</button></a>
-            <a href=""><button class="tombol-hapus">Hapus</button></a>
+            <a href="ubah.php?id=<?= $etk['id']; ?>"><button class="tombol-ubah">Ubah</button></a>
+            <a href="hapus.php?id=<?= $etk['id']; ?>" onclick="return confirm('Apakah anda yakin?') "><button class="tombol-hapus">Hapus</button></a>
           </td>
           <td><img src="../assets/img/<?= $etk["foto"]; ?>" width="200"></td>
           <td><?= $etk["nama_barang"] ?></td>

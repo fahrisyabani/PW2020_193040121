@@ -1,6 +1,5 @@
 <?php
 // Mengecek apakah ada id yang dikimkan
-
 // Jika tidak maka akan dikembalikan ke halaman index.php
 if (!isset($_GET['id'])) {
 	header("location: ../index.php");
@@ -22,7 +21,7 @@ $elektronik = query("SELECT * FROM elektronik WHERE id = $id");
 <head>
 	<meta charset="utf-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="../css/latihan6b.css">
+	<link rel="stylesheet" href="../css/latihan6d.css">
 </head>
 
 <body>

@@ -16,6 +16,7 @@ function query($query)
 	if (mysqli_num_rows($result) == 1) {
 		return mysqli_fetch_assoc($result);
 	}
+
 	$rows = [];
 	while ($row = mysqli_fetch_assoc($result)) {
 		$rows[] = $row;
@@ -51,13 +52,54 @@ function tambah($data)
 	echo mysqli_error($conn);
 	return mysqli_affected_rows($conn);
 }
+function hapus($id)
+{
+	$conn = koneksi();
+	mysqli_query($conn, "DELETE FROM elektronik WHERE id = $id") or die(mysqli_error($conn));
+	return mysqli_affected_rows($conn);
+}
+function ubah($data)
+{
+	$conn = koneksi();
+
+	$id = $data['id'];
+	$foto = htmlspecialchars($data['foto']);
+	$nama_barang = htmlspecialchars($data['nama_barang']);
+	$brand = htmlspecialchars($data['brand']);
+	$spesifikasi = htmlspecialchars($data['spesifikasi']);
+	$keunggulan = htmlspecialchars($data['keunggulan']);
+	$tanggal_rilis = htmlspecialchars($data['tanggal_rilis']);
+	$harga = htmlspecialchars($data['harga']);
+
+	$query = "UPDATE elektronik SET
+
+						foto = '$foto', 
+						nama_barang =	'$nama_barang', 
+						brand = '$brand', 
+						spesifikasi = '$spesifikasi', 
+						keunggulan = '$keunggulan',
+						tanggal_rilis = '$tanggal_rilis',
+						harga = '$harga'
+					
+						WHERE id = $id";
+
+	mysqli_query($conn, $query) or die(mysqli_error($conn));
+	echo mysqli_error($conn);
+	return mysqli_affected_rows($conn);
+}
 function cari($keyword)
 {
 	$conn = koneksi();
 
 	$query = "SELECT * FROM elektronik
 						WHERE 
-						nama_barang LIKE '%$keyword%'
+						foto LIKE '%$keyword%' OR 
+						nama_barang LIKE '%$keyword%' OR
+						brand LIKE '%$keyword%' OR
+						spesifikasi LIKE '%$keyword%' OR
+						keunggulan LIKE '%$keyword%' OR
+						tanggal_rilis LIKE '%$keyword%' OR
+						harga LIKE '%$keyword%' 
 					 ";
 	$result = mysqli_query($conn, $query);
 
