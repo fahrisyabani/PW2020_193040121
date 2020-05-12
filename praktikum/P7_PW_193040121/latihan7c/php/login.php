@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
 
   <!-- My Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Istok+Web&display=swap" rel="stylesheet">
@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
   <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
 
   <!-- My CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/login.css">
 
   <link rel="icon" href="img/Sample-Icon.png">
 
@@ -78,40 +78,63 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-  <form action="" method="post">
-    <?php if (isset($error)) : ?>
-      <p style="color: red; font-style: italic;">Username dan Password salah!</p>
-    <?php endif; ?>
-    <table>
-      <tr>
-        <td><label for="username">Username</label>
-        <td>
-        <td>:</td>
-        <td><input type="username" name="username" autocomplete="off" autofocus></td>
-      </tr>
-      <tr>
-        <td><label for="password">Password</label>
-        <td>
-        <td>:</td>
-        <td><input type="password" name="password" autocomplete="off"></td>
-      </tr>
-    </table>
-    <div class="remember">
-      <input type="checkbox" name="remember">
-      <label for="remember">Remember me</label>
+  <!-- info Panel -->
+  <div class="row justify-content-center login-form-container">
+    <div class="col-3 pl-5 pr-5 info-panel">
+      <div class="row-2">
+        <div class="tombol-kembali">
+          <a href="../index.php">
+            <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+        <h4>Login</h4>
+        <div class="col-lg">
+          <div class="logo">
+            <img src="../assets/img/employe.png" />
+          </div>
+
+        </div>
+        <form method="post" action="" class="login-form">
+          <?php if (isset($error)) : ?>
+            <p style="color: red; font-style: italic;">Username dan Password salah!</p>
+          <?php endif; ?>
+          <div class="input-container">
+            <i class="fa fa-envelope"></i>
+            <svg class="bi bi-person-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+            </svg>
+            <input type="username" name="username" class="input" placeholder="Username" autocomplete="off" autofocus style="font-weight: 100; font-size: 14px;">
+          </div>
+          <div class="input-container">
+            <i class="fa fa-lock"></i>
+            <svg class="bi bi-lock-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <rect width="11" height="9" x="2.5" y="7" rx="2" />
+              <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 117 0v3h-1V4a2.5 2.5 0 00-5 0v3h-1V4z" clip-rule="evenodd" />
+            </svg>
+            <input type="password" id="login-password" class="input" name="password" placeholder="Password" autocomplete="off" style="font-weight: 100; font-size: 14px;" />
+            <i id="show-password" class="fa fa-eye"></i>
+          </div>
+          <br>
+
+          <div class="remember">
+            <input type="checkbox" name="remember">
+            <label for="remember">Remember me</label>
+          </div>
+
+          <!-- Login -->
+          <input type="submit" name="submit" class="btn btn-block btn-primary" value="Login" style="font-weight: 100;">
+          <br>
+          <div class="registrasi">
+            <p>Belum punya akun ? <a href="registrasi.php">Daftar sekarang</a></p>
+          </div>
+        </form>
+      </div>
     </div>
-    <button type="submit" name="submit">Login</button>
-    <div class="registrasi">
-      <p>Belum punya akun ? Registrasi <a href="registrasi.php">Disini</a></p>
-    </div>
-  </form>
+  </div>
 
-
-
-
-
-
-
+  <!-- akhir info Panel -->
 
 
 
@@ -136,7 +159,7 @@ if (isset($_POST['submit'])) {
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="../js/bootstrap.min.js"></script>
 
-  <script src="../js/script.js"></script>
+
 </body>
 
 </html>

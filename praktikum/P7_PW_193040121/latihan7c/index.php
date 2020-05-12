@@ -30,7 +30,7 @@ if (isset($_POST['cari'])) {
 	<link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
 
 	<!-- My CSS -->
-	<link rel="stylesheet" href="css/latihan7c.css">
+	<link rel="stylesheet" href="css/index.css">
 
 	<link rel="icon" href="img/Sample-Icon.png">
 
@@ -40,20 +40,20 @@ if (isset($_POST['cari'])) {
 
 <body>
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-light bg- fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
 		<div class="container">
 
-			<img src="assets/img/brand-img.jpg" width="30" height="30" alt="">
-			<a class="navbar-brand" href="#">Fahri Syabani</a>
+			<img src="assets/img/brand-img.jpg" width="30" height="30" alt="" style="border-radius: 50px;">
+			<a class="navbar-brand mr-5" href="#">Fahri Syabani</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ml-auto">
 					<form class="form-inline" action="" method="POST">
-						<input class="form-control mr-sm-2" size="40" type="search" name="keyword" placeholder="masukan keyword pencarian" aria-label="Search" autocomplete="off" autofocus>
-						<button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="submit" name="cari">Cari</button>
+						<input class="form-control mr-sm-2" size="30" type="search" name="keyword" placeholder="masukan keyword pencarian" aria-label="Search" autocomplete="off" autofocus>
+						<button class="btn btn-outline-primary my-2	my-sm-0 mr-2" type="submit" name="cari">Cari</button>
 					</form>
 					<a class="nav-item btn btn-primary tombol" href="php/login.php">Login</a>
 				</div>
