@@ -1,0 +1,133 @@
+/* Navbar */
+.navbar
+{
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+	position: fixed;
+	z-index: 99999999;
+}
+.navbar-brand
+{
+	font-family: 'viga', sans-serif;
+	font-weight: 200;
+	font-size: 22px;
+	letter-spacing: 1.5px;
+}
+
+
+
+/* Workingspace */
+.workingspace 
+{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.workingspace::after
+{
+	content: '';
+	display: block;
+	width: 101%;
+	height: 59%;
+	background-image: linear-gradient(to top, rgba(0 ,0, 0, 1), rgba(0, 0, 0, 0));
+	position: absolute;
+	bottom: 0;
+}
+
+.workingspace a
+{
+	z-index: 99999999;
+	position: relative;
+}
+
+.workingspace h3
+{
+	font-size: 52px;
+	font-weight: 200;
+	text-transform: uppercase;
+	margin-top: 130px;
+}
+
+.workingspace h3 span
+{
+	font-weight: 500;
+}
+
+.workingspace p
+{
+	font-size: 18px;
+	color: #9e9e9e;
+	font-weight: 200;
+	margin: 20px 0;
+}
+/* Info Panel */
+.info-panel
+{
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin-top: -90px;
+	background-color: white;
+	padding: 40px;
+}
+
+.info-panel h4
+{
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.info-panel p
+{
+	font-size: 14;
+	color: #ACACAC;
+	margin-top: -5px;
+	font-weight: 200; 
+}
+/* deskripsi */
+.deskripsi
+{
+	background-image: url(../assets/img/dark-wallpapers.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	margin-top: -55px;
+}
+
+.deskripsi p
+{
+	
+	font-family: 'Work Sans', sans-serif; 
+	color: #9e9e9e;
+	
+}
+
+.deskripsi h2 
+{
+	color: honeydew;
+	font-weight: lighter;
+}
+
+.card
+{
+	box-shadow: 0 9px 20px rgba(0, 0, 0, 1);
+}
+
+
+/* tombol view */
+.tombol 
+{
+	border-radius: 20px;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+/* DESKTOP VERSION */
+@media (min-width: 992px)
+{
+	
+
+
+
+	
+}
+

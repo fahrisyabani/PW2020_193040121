@@ -1,22 +1,19 @@
 <?php
 
 //functions untuk melakukan koneksi ke database
-
-use function PHPSTORM_META\map;
-
 function koneksi()
 {
-	//melanjutkan koneksi ke database
-	return mysqli_connect("localhost", "root", "", "pw_193040121");
+	$conn = mysqli_connect("localhost", "root", "") or die("koneksi ke DB gagal");
+	mysqli_select_db($conn, "pw_193040121") or die("Database salah!!");
+
+	return $conn;
 }
+
 //functions untuk melakukan query ke database
 function query($query)
 {
 	$conn = koneksi();
-
 	$result = mysqli_query($conn, $query);
-
-	// jika hasil satu data
 	if (mysqli_num_rows($result) == 1) {
 		return mysqli_fetch_assoc($result);
 	}
@@ -27,16 +24,15 @@ function query($query)
 	}
 	return $rows;
 }
-
 // upload file
 function upload()
 {
 
-	$nama_file = $_FILES['gambar']['name'];
-	$tipe_file = $_FILES['gambar']['type'];
-	$ukuran_file = $_FILES['gambar']['size'];
-	$error = $_FILES['gambar']['error'];
-	$tmp_file = $_FILES['gambar']['tmp_name'];
+	$nama_file = $_FILES['foto']['name'];
+	$tipe_file = $_FILES['foto']['type'];
+	$ukuran_file = $_FILES['foto']['size'];
+	$error = $_FILES['foto']['error'];
+	$tmp_file = $_FILES['foto']['tmp_name'];
 
 
 	// ketika tidak ada gambar yang dipilih
@@ -44,7 +40,7 @@ function upload()
 		// echo "<script>
 		// 				alert('pilih gambar terlebih dahulu!');
 		// 				</script>";
-		return 'default.jpg';
+		return 'nophoto.png';
 	}
 
 	// cek ektensi file
@@ -87,7 +83,7 @@ function upload()
 	$nama_file_baru = uniqid();
 	$nama_file_baru .= '.';
 	$nama_file_baru .= $ektensi_file;
-	move_uploaded_file($tmp_file, 'img/' . $nama_file_baru);
+	move_uploaded_file($tmp_file, '../assets/img/' . $nama_file_baru);
 
 	return $nama_file_baru;
 }
@@ -100,26 +96,31 @@ function tambah($data)
 
 
 	// upload gambar
-	$gambar = upload();
-	if (!$gambar) {
+	$foto = upload();
+	if (!$foto) {
 
 		return false;
 	}
-
-	// $gambar = htmlspecialchars($data['gambar']);
-	$nrp = htmlspecialchars($data['nrp']);
-	$nama = htmlspecialchars($data['nama']);
-	$email = htmlspecialchars($data['email']);
-	$jurusan = htmlspecialchars($data['jurusan']);
-
-
+	// $foto = htmlspecialchars($data['foto']);
+	$nama_barang = htmlspecialchars($data['nama_barang']);
+	$brand = htmlspecialchars($data['brand']);
+	$spesifikasi = htmlspecialchars($data['spesifikasi']);
+	$keunggulan = htmlspecialchars($data['keunggulan']);
+	$tanggal_rilis = htmlspecialchars($data['tanggal_rilis']);
+	$harga = htmlspecialchars($data['harga']);
 
 	$query = "INSERT INTO
-					mahasiswa
-					VALUES
-					(null, '$gambar', '$nrp', '$nama', '$email', '$jurusan');
-			";
-
+						elektronik
+						VALUES
+						(null, 
+						'$foto', 
+						'$nama_barang', 
+						'$brand', 
+						'$spesifikasi', 
+						'$keunggulan',
+						'$tanggal_rilis',
+						'$harga');
+				";
 	mysqli_query($conn, $query) or die(mysqli_error($conn));
 	echo mysqli_error($conn);
 	return mysqli_affected_rows($conn);
@@ -128,15 +129,12 @@ function tambah($data)
 // hapus data
 function hapus($id)
 {
-	$conn = koneksi();
-
-	// menghapus gambar difolder img
-	$mhs = query("SELECT * FROM mahasiswa WHERE id = $id");
-	if ($mhs['gambar'] != 'default.jpg') {
-		unlink('img/' . $mhs['gambar']);
+	$conn = koneksi(); 	// menghapus gambar difolder img
+	$etk = query("SELECT * FROM elektronik WHERE id = $id");
+	if ($etk['foto'] != 'nophoto.jpg') {
+		unlink('../assets/img/' . $etk['foto']);
 	}
-
-	mysqli_query($conn, "DELETE FROM mahasiswa WHERE id = $id") or die(mysqli_error($conn));
+	mysqli_query($conn, "DELETE FROM elektronik WHERE id = $id") or die(mysqli_error($conn));
 	return mysqli_affected_rows($conn);
 }
 
@@ -146,32 +144,33 @@ function ubah($data)
 	$conn = koneksi();
 
 	$id = $data['id'];
-	$gambar_lama = htmlspecialchars($data['gambar_lama']);
-	$nrp = htmlspecialchars($data['nrp']);
-	$nama = htmlspecialchars($data['nama']);
-	$email = htmlspecialchars($data['email']);
-	$jurusan = htmlspecialchars($data['jurusan']);
-
-	$gambar = upload();
-	if (!$gambar) {
+	$foto_lama = htmlspecialchars($data['foto_lama']);
+	$nama_barang = htmlspecialchars($data['nama_barang']);
+	$brand = htmlspecialchars($data['brand']);
+	$spesifikasi = htmlspecialchars($data['spesifikasi']);
+	$keunggulan = htmlspecialchars($data['keunggulan']);
+	$tanggal_rilis = htmlspecialchars($data['tanggal_rilis']);
+	$harga = htmlspecialchars($data['harga']);
+	$foto = upload();
+	if (!$foto) {
 
 		return false;
 	}
 
-	if ($gambar == 'default.jpg') {
-		$gambar = $gambar_lama;
+	if ($foto == 'nophoto.png') {
+		$foto = $foto_lama;
 	}
+	$query = "UPDATE elektronik SET
 
-
-	$query = "UPDATE mahasiswa SET
-
-					gambar = '$gambar',
-					nrp = '$nrp', 
-					nama = '$nama', 
-					email = '$email', 
-					jurusan = '$jurusan' 
+						foto = '$foto', 
+						nama_barang =	'$nama_barang', 
+						brand = '$brand', 
+						spesifikasi = '$spesifikasi', 
+						keunggulan = '$keunggulan',
+						tanggal_rilis = '$tanggal_rilis',
+						harga = '$harga'
 					
-					WHERE id = $id";
+						WHERE id = $id";
 
 	mysqli_query($conn, $query) or die(mysqli_error($conn));
 	echo mysqli_error($conn);
@@ -183,12 +182,16 @@ function cari($keyword)
 {
 	$conn = koneksi();
 
-	$query = "SELECT * FROM mahasiswa 
+	$query = "SELECT * FROM elektronik
 						WHERE 
-						nama LIKE '%$keyword%' OR 
-						nrp LIKE '%$keyword%'
-						";
-
+						foto LIKE '%$keyword%' OR 
+						nama_barang LIKE '%$keyword%' OR
+						brand LIKE '%$keyword%' OR
+						spesifikasi LIKE '%$keyword%' OR
+						keunggulan LIKE '%$keyword%' OR
+						tanggal_rilis LIKE '%$keyword%' OR
+						harga LIKE '%$keyword%' 
+					 ";
 	$result = mysqli_query($conn, $query);
 
 	$rows = [];
@@ -201,32 +204,8 @@ function cari($keyword)
 }
 
 
-// login data
-function login($data)
-{
-	$conn = koneksi();
-
-	$username = htmlspecialchars($data['username']);
-	$password = htmlspecialchars($data['password']);
-
-	// cek dulu username
-	if ($user = query("SELECT * FROM user WHERE username = '$username' ")) {
-		// cek password
-		if (password_verify($password, $user['password'])) {
-			// set session
-			$_SESSION['login'] = true;
-
-			header("Location: index.php");
-			exit;
-		}
-	}
-	return [
-		'error' => true,
-		'pesan' => 'Username / Password Salah!'
-	];
-}
-
-
+// 	return mysqli_affected_rows($conn);
+// }
 // registrasi data
 function registrasi($data)
 {
@@ -264,6 +243,7 @@ function registrasi($data)
 						document.location.href = 'registrasi.php';
 					</script>";
 
+
 		return false;
 	}
 
@@ -286,6 +266,7 @@ function registrasi($data)
 						VALUES
 						(null, '$username', '$password_baru')
 						";
+
 
 	mysqli_query($conn, $query) or die(mysqli_error($conn));
 
